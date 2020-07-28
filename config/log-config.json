@@ -1,0 +1,42 @@
+{
+  "__comment": "trace ⊂ debug ⊂ info ⊂ warn ⊂ error ⊂ fatal",
+  "appenders": {
+    "STDOUT": {
+      "type": "stdout"
+    },
+    "FILE": {
+      "type": "file",
+      "filename": "./logs/api.log",
+      "maxLogSize": 10485760,
+      "numBackups": 5
+    }
+  },
+  "categories": {
+    "default": {
+      "appenders": [
+        "STDOUT"
+      ],
+      "level": "debug"
+    },
+    "TRACING": {
+      "appenders": [
+        "STDOUT",
+        "FILE"
+      ],
+      "level": "trace"
+    },
+    "TEST": {
+      "appenders": [
+        "STDOUT",
+        "FILE"
+      ],
+      "level": "error"
+    },
+    "RELEASE": {
+      "appenders": [
+        "FILE"
+      ],
+      "level": "error"
+    }
+  }
+}

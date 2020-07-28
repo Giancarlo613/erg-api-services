@@ -1,0 +1,16 @@
+{
+  "ids": {
+    "User": 3,
+    "UserCredentials": 3
+  },
+  "models": {
+    "User": {
+      "1792e42d-9fdd-4cc0-9c49-562946a81dc1": "{\"id\":\"1792e42d-9fdd-4cc0-9c49-562946a81dc1\",\"username\":\"admin\",\"email\":\"admin@erg.eu\",\"additionalProp1\":{\"meteologica_auth\":\"all\",\"gpmpower_auth\":\"all\"}}",
+      "8fa2a339-2b43-424d-af3d-169874cab027": "{\"id\":\"8fa2a339-2b43-424d-af3d-169874cab027\",\"username\":\"developer\",\"email\":\"dev@partner.it\",\"additionalProp1\":{\"meteologica_auth\":\"ERGRenew_Macchi\",\"gpmpower_auth\":\"S15MUNT\"}}"
+    },
+    "UserCredentials": {
+      "5fa7de1b-6dfe-475e-abda-7ced87c9aa1c": "{\"id\":\"5fa7de1b-6dfe-475e-abda-7ced87c9aa1c\",\"password\":\"$2a$10$HTpuJQnZ1SQCRt.WC8jUEO21jCIMTIt5OcEPvo8ZEaRnszHbWMLz6\",\"userId\":\"1792e42d-9fdd-4cc0-9c49-562946a81dc1\"}",
+      "d489c890-0c47-4f62-9db6-105fd329fc30": "{\"id\":\"d489c890-0c47-4f62-9db6-105fd329fc30\",\"password\":\"$2a$10$RPPEWNW/ecTmUw9oxlBae.nfsie1aZy9WpQs8wXrRlhYTZzYFWynq\",\"userId\":\"8fa2a339-2b43-424d-af3d-169874cab027\"}"
+    }
+  }
+}

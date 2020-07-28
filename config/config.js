@@ -1,0 +1,14 @@
+// config.js
+
+module.exports = {
+  NODE_ENV: process.env.NODE_ENV,
+  HOST: process.env.HOST,
+  PORT: process.env.PORT,
+  API_PATH: process.env.API_PATH,
+  LOG_CFG: process.env.LOG_CFG,
+  GPM_BURL: process.env.GPM_BURL,
+  GPM_URL: process.env.GPM_URL,
+  METE_URL: process.env.METE_URL,
+  METE_WSDL: process.env.METE_WSDL
+};
+
