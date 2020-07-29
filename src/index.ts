@@ -23,7 +23,8 @@ export async function main(options: ApplicationConfig = {}) {
 
 if (require.main === module) {
   // Verify config
-  logger.info('INFO: Configuration start');
+  logger.log('Application starting');
+  logger.info('INFO: Configuration begin ...');
   logger.info("INFO: NODE_ENV = " + NODE_ENV);
   logger.info("INFO: HOST = " + HOST);
   logger.info("INFO: PORT = " + PORT);
@@ -34,6 +35,7 @@ if (require.main === module) {
   logger.info("INFO: METE_URL = " + METE_URL);
   logger.info("INFO: METE_WSDL = " + METE_WSDL);
   logger.info("INFO: Configuration end");
+  logger.info("INFO: Completing application start...")
   // Run the application
   const config = {
     rest: {

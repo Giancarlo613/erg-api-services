@@ -65,6 +65,6 @@ export class ApiApplication extends BootMixin(
     // Bind datasource
     this.dataSource(DbDataSource, UserServiceBindings.DATASOURCE_NAME);
     // ------------- END OF SNIPPET -------------
-    logger.info('INFO - logger configuration: ' + LOG_CFG);
+    logger.info('INFO - logger configuration accepted: ' + LOG_CFG);
   }
 }
