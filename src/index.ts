@@ -33,7 +33,6 @@ if (require.main === module) {
   logger.info("INFO: GPM_URL = " + GPM_URL);
   logger.info("INFO: METE_URL = " + METE_URL);
   logger.info("INFO: METE_WSDL = " + METE_WSDL);
-  logger.info('INFO DB Connection attempt');
   logger.info("INFO: Configuration end");
   // Run the application
   const config = {
