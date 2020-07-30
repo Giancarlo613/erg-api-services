@@ -15,6 +15,7 @@ module.exports = {
   DB_USER: process.env.DB_USER,
   DB_PWD: process.env.DB_PWD,
   DB_NAME: process.env.DB_NAME,
-  DB_SCHEMA: process.env.DB_SCHEMA
+  DB_SCHEMA: process.env.DB_SCHEMA,
+  DB_TABLE: process.env.DB_TABLE
 };
 
