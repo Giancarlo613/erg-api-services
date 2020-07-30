@@ -35,7 +35,7 @@ if (require.main === module) {
   logger.info("INFO: METE_URL = " + METE_URL);
   logger.info("INFO: METE_WSDL = " + METE_WSDL);
   logger.info("INFO: Configuration end");
-  logger.info("INFO: Completing application start...")
+  logger.info("INFO: ATTEMPING DB ACCESS ...")
   // Run the application
   const config = {
     rest: {
