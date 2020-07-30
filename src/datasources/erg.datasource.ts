@@ -1,7 +1,7 @@
 import {inject, lifeCycleObserver, LifeCycleObserver} from '@loopback/core';
 import {juggler} from '@loopback/repository';
 
-const {DB_HOST, DB_USER, DB_PWD, DB_NAME} = require('../../config/config');
+const {DB_HOST, DB_USER, DB_PWD, DB_NAME, DB_SCHEMA} = require('../../config/config');
 
 const config = {
   name: 'erg',
@@ -10,7 +10,8 @@ const config = {
   port: 1433,
   user: DB_USER,
   password: DB_PWD,
-  database: DB_NAME
+  database: DB_NAME,
+  schema: DB_SCHEMA
 };
 
 // Observe application's life cycle to disconnect the datasource when
