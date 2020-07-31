@@ -5,68 +5,80 @@ import {Entity, model, property} from '@loopback/repository';
   name: 'Power_ERG_Curve_Consuntive'
 })
 export class PowerErgCurveConsuntive extends Entity {
-  @property({
-    type: 'number',
-    id: true,
-    generated: true,
-  })
-  etlInsertAuditId?: number;
 
   @property({
-    type: 'number',
+    name: 'DateId',
+    id: true,
+    generated: true,
+    type: 'number'
   })
   dateId?: number;
 
   @property({
-    type: 'string',
+    name: 'UP_Cod',
+    type: 'string'
   })
   upCod?: string;
 
   @property({
-    type: 'string',
+    name: 'UP_Name',
+    type: 'string'
   })
   upName?: string;
 
   @property({
-    type: 'date',
+    name: 'Data',
+    type: 'date'
   })
   data?: string;
 
   @property({
-    type: 'number',
+    name: 'Ora',
+    type: 'number'
   })
   ora?: number;
 
   @property({
-    type: 'number',
+    name: 'QuartoOra',
+    type: 'number'
   })
   quartoOra?: number;
 
   @property({
-    type: 'number',
+    name: 'EEA',
+    type: 'number'
   })
   eea?: number;
 
   @property({
-    type: 'number',
+    name: 'EUA',
+    type: 'number'
   })
   eua?: number;
 
   @property({
-    type: 'string',
+    name: 'Tecnologia',
+    type: 'string'
   })
   tecnologia?: string;
 
   @property({
-    type: 'string',
+    name: 'Zona',
+    type: 'string'
   })
   zona?: string;
 
   @property({
-    type: 'string',
+    name: 'Macrozona',
+    type: 'string'
   })
   macrozona?: string;
 
+  @property({
+    name: 'etl_insert_audit_id',
+    type: 'number',
+  })
+  etlInsertAuditId?: number;
 
   constructor(data?: Partial<PowerErgCurveConsuntive>) {
     super(data);

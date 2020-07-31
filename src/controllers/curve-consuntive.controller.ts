@@ -2,7 +2,7 @@ import {
   Count,
   CountSchema,
   Filter,
-  FilterExcludingWhere,
+
   repository,
   Where
 } from '@loopback/repository';
@@ -52,25 +52,6 @@ export class CurveConsuntiveController {
     @param.filter(PowerErgCurveConsuntive) filter?: Filter<PowerErgCurveConsuntive>,
   ): Promise<PowerErgCurveConsuntive[]> {
     return this.powerErgCurveConsuntiveRepository.find(filter);
-  }
-
-  @get('/erg-api/v1/curve-consuntive/{id}', {
-    responses: {
-      '200': {
-        description: 'PowerErgCurveConsuntive model instance',
-        content: {
-          'application/json': {
-            schema: getModelSchemaRef(PowerErgCurveConsuntive, {includeRelations: true}),
-          },
-        },
-      },
-    },
-  })
-  async findById(
-    @param.path.number('id') id: number,
-    @param.filter(PowerErgCurveConsuntive, {exclude: 'where'}) filter?: FilterExcludingWhere<PowerErgCurveConsuntive>
-  ): Promise<PowerErgCurveConsuntive> {
-    return this.powerErgCurveConsuntiveRepository.findById(id, filter);
   }
 
 }
