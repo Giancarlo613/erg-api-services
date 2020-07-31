@@ -17,6 +17,7 @@ export async function main(options: ApplicationConfig = {}) {
   // console.log(`Server is running at ${url}`);
   // console.log(`Try ${url}/ping`);
   logger.info(`Server is running at ${url}`);
+  logger.info('******* Repo commit 17 *******');
 
   return app;
 }

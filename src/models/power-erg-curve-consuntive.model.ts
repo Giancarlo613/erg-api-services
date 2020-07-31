@@ -1,7 +1,8 @@
 import {Entity, model, property} from '@loopback/repository';
 
 @model({
-  name: 'stage.Power_ERG_Curve_Consuntive'
+  schema: 'stage',
+  name: 'Power_ERG_Curve_Consuntive'
 })
 export class PowerErgCurveConsuntive extends Entity {
   @property({
