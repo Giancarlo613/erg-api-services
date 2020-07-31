@@ -1,6 +1,8 @@
 import {Entity, model, property} from '@loopback/repository';
 
-@model()
+@model({
+  name: 'Power_ERG_Curve_Consuntive'
+})
 export class PowerErgCurveConsuntive extends Entity {
   @property({
     type: 'number',
