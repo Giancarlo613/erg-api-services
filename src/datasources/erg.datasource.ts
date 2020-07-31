@@ -12,7 +12,10 @@ const config = {
   password: DB_PWD,
   database: DB_NAME,
   schema: DB_SCHEMA,
-  table: DB_TABLE
+  table: DB_TABLE,
+  options: {
+    encrypt: true
+  }
 };
 
 // Observe application's life cycle to disconnect the datasource when
