@@ -1,3 +1,4 @@
+import {authenticate} from '@loopback/authentication';
 import {
   Count,
   CountSchema,
@@ -13,6 +14,7 @@ import {
 import {PowerErgCurveConsuntive} from '../models';
 import {PowerErgCurveConsuntiveRepository} from '../repositories';
 
+@authenticate('jwt')
 export class CurveConsuntiveController {
   constructor(
     @repository(PowerErgCurveConsuntiveRepository)

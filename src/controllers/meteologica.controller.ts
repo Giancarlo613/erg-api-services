@@ -8,11 +8,11 @@ import {SecurityBindings, securityId, UserProfile} from '@loopback/security';
 import {configure, getLogger} from 'log4js';
 import {
   GetAllFacilitiesParameters, GetAllFacilitiesResponse,
-  GetForecastMultiParameters, GetForecastMultiResponse,
-  GetForecastParameters, GetForecastResponse,
+  GetForecastMultiParameters,
+  GetForecastMultiResponse, GetForecastParameters, GetForecastResponse,
   LoginParameters, LoginResponse,
-  LogoutParameters, LogoutResponse,
-  MeteologicaService
+  LogoutParameters,
+  LogoutResponse, MeteologicaService
 } from '../services/meteologica-service.service';
 
 const {LOG_CFG} = require('../../config/config');
@@ -92,6 +92,7 @@ export class MeteologicaController {
 
   @post('/erg-api/v1/meteologica/get-forecast')
   async getForecast(
+    @inject(SecurityBindings.USER) currentUserProfile: UserProfile,
     @requestBody({
       content: {
         "application/json": {
@@ -112,9 +113,29 @@ export class MeteologicaController {
       }
     }) args: GetForecastParameters
   ): Promise<GetForecastResponse> {
+    // try {
+    //   logger.info('MeteologicaController.getForecast - ok');
+    //   return await this.meteologicaService.getForecast(args);
+    // } catch (error) {
+    //   logger.error('MeteologicaController.getForecast - ' + error);
+    //   throw new HttpErrors.BadRequest(error);
+    // }
     try {
-      logger.info('MeteologicaController.getForecast - ok');
-      return await this.meteologicaService.getForecast(args);
+      const userId = currentUserProfile[securityId];
+      const user = await this.userRepository.findById(userId);
+      if (user.additionalProp1.meteologica_auth === 'all') {
+        logger.info('MeteologicaController.getForecast - admin ok');
+        return await this.meteologicaService.getForecast(args);
+      } else {
+        const unit = user.additionalProp1.meteologica_auth;
+        const responseData = await this.meteologicaService.getForecast(args);
+        if (responseData.result.return.facilityId === unit) {
+          logger.info('MeteologicaController.getForecast - user ok');
+          return responseData;
+        } else {
+          throw new HttpErrors.Forbidden();
+        }
+      }
     } catch (error) {
       logger.error('MeteologicaController.getForecast - ' + error);
       throw new HttpErrors.BadRequest(error);
@@ -123,6 +144,7 @@ export class MeteologicaController {
 
   @post('/erg-api/v1/meteologica/get-multi-forecast')
   async getForecastMulti(
+    @inject(SecurityBindings.USER) currentUserProfile: UserProfile,
     @requestBody({
       content: {
         "application/json": {
@@ -147,11 +169,31 @@ export class MeteologicaController {
       }
     }) args: GetForecastMultiParameters
   ): Promise<GetForecastMultiResponse> {
+    // try {
+    //   logger.info('MeteologicaController.getForecastMulti - ok');
+    //   return await this.meteologicaService.getForecastMulti(args);
+    // } catch (error) {
+    //   logger.error('MeteologicaController.getForecast - ' + error);
+    //   throw new HttpErrors.BadRequest(error);
+    // }
     try {
-      logger.info('MeteologicaController.getForecastMulti - ok');
-      return await this.meteologicaService.getForecastMulti(args);
+      const userId = currentUserProfile[securityId];
+      const user = await this.userRepository.findById(userId);
+      const unit = user.additionalProp1.meteologica_auth;
+      if (user.additionalProp1.meteologica_auth === 'all') {
+        logger.info('MeteologicaController.getForecast - admin ok');
+        return await this.meteologicaService.getForecastMulti(args);
+      } else {
+        for (const f of args.request.facilitiesId) {
+          if (f === unit) {
+            logger.info('MeteologicaController.getForecast - user ok');
+            return await this.meteologicaService.getForecastMulti(args);
+          }
+        }
+        throw new HttpErrors.Forbidden('Accesso non consentito');
+      }
     } catch (error) {
-      logger.error('MeteologicaController.getForecast - ' + error);
+      logger.error('MeteologicaController.getForecastMulti - ' + error);
       throw new HttpErrors.BadRequest(error);
     }
   }
@@ -176,7 +218,6 @@ export class MeteologicaController {
       logger.error('MeteologicaController.logout - ' + error);
       throw new HttpErrors.BadRequest(error);
     }
-
   }
 
 }
