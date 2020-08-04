@@ -185,7 +185,7 @@ export class MeteologicaController {
         return await this.meteologicaService.getForecastMulti(args);
       } else {
         for (const f of args.request.facilitiesId) {
-          if (f === unit) {
+          if (f.item === unit) {
             logger.info('MeteologicaController.getForecast - user ok');
             return await this.meteologicaService.getForecastMulti(args);
           }
