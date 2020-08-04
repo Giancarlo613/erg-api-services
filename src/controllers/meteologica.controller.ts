@@ -181,13 +181,15 @@ export class MeteologicaController {
       const user = await this.userRepository.findById(userId);
       const unit = user.additionalProp1.meteologica_auth;
       if (user.additionalProp1.meteologica_auth === 'all') {
-        logger.info('MeteologicaController.getForecast - admin ok');
+        logger.info('MeteologicaController.getForecastMulti - admin ok');
         return await this.meteologicaService.getForecastMulti(args);
       } else {
         for (const f of args.request.facilitiesId) {
           if (f.item === unit) {
-            logger.info('MeteologicaController.getForecast - user ok');
+            logger.info('MeteologicaController.getForecastMulti - user ok');
             return await this.meteologicaService.getForecastMulti(args);
+          } else {
+            throw new HttpErrors.Forbidden('Accesso non consentito');
           }
         }
         throw new HttpErrors.Forbidden('Accesso non consentito');
