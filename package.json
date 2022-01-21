@@ -56,7 +56,7 @@
     "@loopback/rest": "^5.2.0",
     "@loopback/rest-explorer": "^2.2.6",
     "@loopback/service-proxy": "^2.3.4",
-    "log4js": "^6.3.0",
+    "log4js": "^6.4.0",
     "loopback-connector-mssql": "^3.8.0",
     "loopback-connector-rest": "^3.7.0",
     "loopback-connector-soap": "^5.1.0",
